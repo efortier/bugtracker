@@ -1,0 +1,113 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-offset-1 col-sm-6">
+            <div class="form-group">
+                <label for="rep_title">Titre du rapport:</label>
+                <input type="text" class="form-control" id="rep_title" name="rep_title" (input)="onTitleChanged($event.target.value)" [(ngModel)]="btReport.issue_title">
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="Sel_Project">Projet:</label>
+                <select class="form-control" (change)="onProjectChanged($event.target.value)" name="Sel_Project" id="Sel_Project">
+                    <option *ngFor="let item of btProjects" [ngValue]="item.name" [selected]="item.name === btReport.issue_project">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-offset-1 col-sm-3">
+            <div class="form-group">
+                <label for="Sel_Status">État:</label>
+                <select class="form-control" (change)="onStatusChanged($event.target.value)" name="Sel_Status" id="Sel_Status">
+                    <option *ngFor="let item of btStates" [ngValue]="item.name" [selected]="item.name === btReport.issue_status">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="Sel_Assigned">Assigné à:</label>
+                <select class="form-control" (change)="onAssignedChanged($event.target.value)" name="Assigned" id="Sel_Assigned">
+                    <option value="" selected disabled>Choisir utilisateur</option>
+                    <option value="" [selected]="!btReport.issue_assigned || btReport.issue_assigned === ''">Personne</option>
+                    <option *ngFor="let item of btUsers" [ngValue]="item.name" [selected]="item.name === btReport.issue_assigned">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="Sel_Author">Rapporté par:</label>
+                <select class="form-control" (change)="onAuthorChanged($event.target.value)" name="Author" id="Sel_Author">
+                    <option value="" selected disabled>Choisir utilisateur...</option>
+                    <option *ngFor="let item of btUsers" [ngValue]="item.name" [selected]="item.name === btReport.issue_author">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-offset-1 col-sm-3">
+            <div class="form-group">
+                <label for="Sel_Status">Type du problème:</label>
+                <select class="form-control" (change)="onTypeChanged($event.target.value)" name="Sel_Status" id="Sel_Status">
+                    <option *ngFor="let item of btTypes" [ngValue]="item.name" [selected]="item.name === btReport.issue_type">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="Sel_Severity">Gravité du problème:</label>
+                <select class="form-control" (change)="onSeverityChanged($event.target.value)" name="Sel_Severity" id="Sel_Severity">
+                    <option *ngFor="let item of btSeverity" [ngValue]="item.name" [selected]="item.name === btReport.issue_severity">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="rep_tags">Mots clés:</label>
+                <input type="text" class="form-control" id="rep_tags" name="rep_tags" (input)="onTagsChanged($event.target.value)" [(ngModel)]="btReport.issue_tags">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-offset-1 col-sm-9">
+            <div class="form-group">
+                <label for="rep_desc">Description du problème: (inclure les étapes pour reproduire le problème, résultats actuels vs anticipés, etc)</label>
+                <textarea class="form-control" rows="8" id="rep_desc" (input)="onDescChanged($event.target.value)" placeholder="Description"
+                    [(ngModel)]="btReport.issue_description"></textarea>
+            </div>
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-9">
+            <div class="form-group">
+                <label for="rep_feedback">Commentaires: (Suggestions, discussions, etc.)</label>
+                <textarea class="form-control" rows="8" id="rep_feedback" (input)="onFeedbackChanged($event.target.value)" placeholder="Entrer vos commentaires"
+                [(ngModel)]="btReport.issue_feedback"></textarea>
+            </div>
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-9">
+            <section class="pull-left">
+                <input type="submit" class="btn btn-danger" (click)="onDeleteClick();" value="Supprimer le rapport">
+            </section>
+            <section class="pull-right">
+                <input type="submit" class="btn btn-success" [disabled]="!btReport.isValid" (click)="onSubmitClick();" value="Sauvegarder les modifications!">
+                <input type="button" class="btn btn-default" (click)="onCancelClick();" value="Annuler">
+            </section>
+        </div>
+    </div>
+
+</div>

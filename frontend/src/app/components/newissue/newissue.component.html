@@ -1,0 +1,66 @@
+<div class="container">
+    
+      <div class="row">
+    
+        <div class="col-sm-offset-1 col-sm-3">
+    
+          <div class="form-group">
+            <label for="Sel_Projects">Projet du rapport:</label>
+            <select class="form-control" (change)="onProjectChanged($event.target.value)" name="Projects" id="Sel_Projects">
+              <option value="" disabled selected>Choisir un projet</option>
+              <option *ngFor="let item of btProjects" [ngValue]="item.name" [selected]="false">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+    
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Sel_Types">Type du rapport:</label>
+            <select class="form-control" (change)="onTypeChanged($event.target.value)" name="Types" id="Sel_Types">
+              <option value="none" disabled selected>Choisir un type</option>
+              <option *ngFor="let item of btTypes" [ngValue]="item.name">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+    
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Sel_Severity">Gravité du problème:</label>
+            <select class="form-control" (change)="onSeverityChanged($event.target.value)" name="Severity" id="Sel_Severity">
+              <option value="none" disabled selected>Choisir la gravité</option>
+              <option *ngFor="let item of btSeverity" [ngValue]="item.name">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+    
+      </div>
+    
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-6">
+          <div class="form-group">
+            <label for="rep_title">Titre du rapport:</label>
+            <input type="text" class="form-control" id="rep_title" (input)="onTitleChanged($event.target.value)" placeholder="Enter report title">
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="rep_tags">Mots clés:</label>
+            <input type="text" class="form-control" id="rep_tags" (input)="onTagsChanged($event.target.value)" placeholder="Separer les mots clés par une virgule">
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-9">
+          <div class="form-group">
+            <label for="rep_desc">Description du problème: (inclure les étapes pour reproduire le problème, résultats actuels vs anticipés, etc)</label>
+            <textarea class="form-control" rows="8" id="rep_desc" (input)="onDescChanged($event.target.value)" placeholder="Description"></textarea>
+          </div>
+          <section class="pull-right">
+            <input type="submit" class="btn btn-primary" [disabled]="!btReport.isValid" (click)="onSubmitClick();" value="Enregistrer le rapport">
+            <input type="button" class="btn btn-default" (click)="onCancelClick();" value="Annuler">
+          </section>
+        </div>
+      </div>
+    
+    </div>

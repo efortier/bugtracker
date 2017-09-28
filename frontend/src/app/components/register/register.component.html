@@ -1,0 +1,25 @@
+<div style="margin: 0 auto; width:400px;">
+  <h2 class="page-header">Créer un compte</h2>
+  <form (submit)="onRegisterSubmit()">
+    <div class="form-group">
+      <label for="realname">Prénom et nom:</label>
+      <input type="text" name="realname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Courriel:</label>
+      <input type="email" name="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Nom d'utilisateur:</label>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Mot de passe:</label>
+      <input type="password" [(ngModel)]="password" name="password" class="form-control">
+    </div>
+    <div class="form-group pull-right">
+      <input type="submit" class="btn btn-primary" value="Créer le compte">
+      <input type="button" class="btn btn-default" (click)="onCancelClick();" value="Annuler">
+    </div>
+  </form>
+</div>

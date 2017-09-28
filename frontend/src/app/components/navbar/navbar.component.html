@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" style="font-size: x-large;" [routerLink]="['/']">BugTracker</a>
+      <ul class="nav navbar-nav navbar-left">
+        <li *ngIf="!!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" [routerLink]="['/issues']">Page principale</a>
+        </li>
+        <li *ngIf="!!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" [routerLink]="['/newissue']">Créer un rapport</a>
+        </li>
+      </ul>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/login']">Ouvrir une session</a>
+      </li>
+      <li>
+        <a *ngIf="!!authService.isLoggedIn()" class="nav-link" (click)="OnLogoutClick()" href="#">Fermer la session</a>
+      </li>
+      <li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/register']">Créer un compte</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+<div class="container" style="margin-top: 12px;" style="margin: 0 auto;">
+
+  <div class="row">
+    <div class=" col-sm-offset-1 col-sm-10">
+      <div class="jumbotron text-center well">
+        <h1>BugTracker</h1>
+        <p class="lead">Le meilleur outil pour un suivi efficace de vos bogues!</p>
+        <div *ngIf="!authService.isLoggedIn()">
+          <a class="btn btn-primary" [routerLink]="['/login']">Ouvrir une session</a>
+          <a class="btn btn-default" [routerLink]="['/register']">Créer un compte</a>
+        </div>
+        <div *ngIf="!!authService.isLoggedIn()">
+          <a class="btn btn-success" [routerLink]="['/issues']">Votre session est active, aller à la page principale</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6 text-center" >
+      <h4>Merci d'essayer cette démo!</h4>
+      <p class="text-left">Ce concept d'outil de gestion de bogues a été créé grâce à la plateforme MEAN, soit MongoDB, Express, Angular et NodeJS.</p> 
+      <p class="text-left">Bien qu’ayant été réalisé a des fins d’apprentissage, cet outil est fonctionnel et comporte plusieurs composantes programmées suivant les règles de création d’interface Angular. La partie serveur, réalisée sous Express, utilise Mongoose pour faciliter la gestion de la base de donnée MongoDB et est aussi responsable de l’authentification des utilisateurs.</p>
+        <p class="text-left">Des services ont été créés pour gérer l’identification des utilisateurs, pour la validation des divers champs de saisie, ainsi que pour faire des requêtes sur la base de donnée.</p>
+        <p class="text-left">Un service de garde s’assure que seuls les utilisateurs qui ont ouvert une session peuvent utiliser les fonctions du site.</p>
+        <p class="text-left">Pour jeter un œil sur quelques-uns des fichiers source de ce projet, dirigez-vous vers : <a href="https://github.com/efortier/bugtracker">https://github.com/efortier/bugtracker</a>.</p>
+        <p class="text-left">Vous pouvez me joindre à l'adresse courriel <B>eric.c.fortier@gmail.com</B>.</p>
+    </div>
+  </div>
+</div>
+

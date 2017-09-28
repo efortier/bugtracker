@@ -1,0 +1,17 @@
+<div >
+    <div class="row">
+    <div class="jumbotron text-center well">
+      <h2>Rapport d'incident créé avec succès!</h2>
+      <h4>Souvenez-vous: un incident = un rapport.</h4>
+    </div>
+  </div>
+  <div class="row text-center">
+      <h4>Que désirez-vous faire maintenant?</h4>
+        <div *ngIf="!!authService.isLoggedIn()" class="">
+            <button class="btn btn-primary" (click)="onCreateClick()">Créer un autre rapport</button>
+            <button class="btn btn-default" (click)="onViewClick()">Voir votre rapport</button>
+            <button class="btn btn-default" (click)="onBackClick()">Retour à la page principale</button>
+        </div>
+  </div>
+</div>
+

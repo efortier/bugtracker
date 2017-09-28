@@ -1,0 +1,47 @@
+<h4>Liste de problèmes</h4>
+<div class="form-group" >
+    <ngx-datatable class="material"
+    [sorts]="ngx_sorts"
+    [rows]="rows"
+    [columns]="ngx_columns"
+    [columnMode]="'force'"
+    [headerHeight]="36"
+    [footerHeight]="36"
+    [rowHeight]="32"
+    [externalPaging]="true"
+    [externalSorting]="true"
+    [loadingIndicator]="loadingIndicator"
+    [count]="page.totalElements"
+    [offset]="page.pageNumber"
+    [limit]="page.pageSize"
+    (page)='setPage($event)'
+    (activate)="onActivate($event)"
+    name="grid">
+  </ngx-datatable>
+</div>
+<h4>Filtrer la liste par:</h4>
+    <div class="form-group col-sm-2">
+  <label for="titleFilter">Titre:</label>
+  <input type='text' class="form-control" [(ngModel)]="page.titleFilter" placeholder='Titre' (input)='updateTitleFilter($event.target.value)' name="titleFilter" />
+</div>
+<div class="form-group col-sm-2">
+    <label for="projectFilter">Projet:</label>
+    <input type='text' class="form-control" [(ngModel)]="page.projectFilter" placeholder='Projet' (input)='updateProjectFilter($event.target.value)' name="projectFilter" />
+</div>
+<div class="form-group col-sm-2">
+    <label for="typeFilter">Type de rapport:</label>
+    <input type='text' class="form-control" [(ngModel)]="page.typeFilter" placeholder='Type de rapport' (input)='updateTypeFilter($event.target.value)' name="typeFilter" />
+</div>
+<div class="form-group col-sm-2">
+    <label for="severityFilter">Gravité:</label>
+    <input type='text' class="form-control" [(ngModel)]="page.severityFilter" placeholder='Gravité' (input)='updateSeverityFilter($event.target.value)' name="severityFilter" />
+</div>
+<div class="form-group col-sm-2">
+    <label for="statusFilter">Statut:</label>
+    <input type='text' class="form-control" [(ngModel)]="page.statusFilter" placeholder='Statut' (input)='updateStatusFilter($event.target.value)' name="statusFilter" />
+</div>
+<div class="form-group col-sm-2">
+    <label for="ResetButton"><BR></label><BR>
+    <input type="button" class="btn btn-primary" (click)="onResetClick();" value="
+    remise à zéros" name="ResetButton">
+</div>
